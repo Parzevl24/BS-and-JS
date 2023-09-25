@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Function to return the passed string in alphabetical order</h1>
+    <label for="str">Enter a word</label>
+    <input type="text" id="str" />
+    <button onclick="alphabetical()">Change order</button>
+    <p id="result"></p>
+    <script>
+      function alphabetical() {
+        str = document.getElementById("str").value;
+        const arr = [];
+        for (let i = 0; i < str.length; i++) {
+          arr.push(str.charAt(i));
+        }
+        arr.sort();
+        console.log(str);
+        console.log(arr);
+        result = arr.join('');
+        document.getElementById("result").innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

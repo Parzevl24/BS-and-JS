@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detailed Form</title>
+    <style>
+      #main_content {
+        background-color: #b5e016;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .details {
+        border: 1px solid black;
+        background-color: #a0b363;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="myform" onsubmit="return validation()">
+      <div id="main_content">
+        <div>
+          <h2>Your Details</h2>
+          <div class="details">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <p id="nameerr" class="error"></p>
+          </div>
+          <div class="details">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" />
+            <p id="emailerr" class="error"></p>
+          </div>
+          <div class="details">
+            <label for="website">Website</label>
+            <input type="url" id="website" name="website" />
+            <p id="websiteerr" class="error"></p>
+          </div>
+          <div class="details">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <p id="messageerr" class="error"></p>
+          </div>
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <script>
+      function validation() {
+        // Validating name
+        var nameInput = document.myform.name.value.trim();
+        var nameErr = document.getElementById("nameerr");
+        if (nameInput === "") {
+          nameErr.innerHTML = "Name is required";
+          return false;
+        } else {
+          nameErr.innerHTML = "";
+        }
+
+        // Validating email
+        var emailInput = document.myform.email.value.trim();
+        var emailErr = document.getElementById("emailerr");
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(emailInput)) {
+          emailErr.innerHTML = "Invalid email address";
+          return false;
+        } else {
+          emailErr.innerHTML = "";
+        }
+
+        // Validating website
+        var websiteInput = document.myform.website.value.trim();
+        var websiteErr = document.getElementById("websiteerr");
+        var websitePattern = /^(http:\/\/www\.|https:\/\/www\.|www\.)[a-zA-Z0-9]+\.[a-zA-Z]{2,5}$/;
+        if (!websitePattern.test(websiteInput)) {
+          websiteErr.innerHTML = "Invalid website URL";
+          return false;
+        } else {
+          websiteErr.innerHTML = "";
+        }
+
+        // Validating message (optional)
+        var messageInput = document.myform.message.value.trim();
+        var messageErr = document.getElementById("messageerr");
+        if (messageInput.length > 500) {
+          messageErr.innerHTML = "Message is too long (max 500 characters)";
+          return false;
+        } else {
+          messageErr.innerHTML = "";
+        }
+
+        // All validations passed
+        return true;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Function to Multiply and Divide two numbers</h1>
+    <label for="num1">Enter first number</label>
+    <input type="number" id="num1">
+    <label for="num2">Enter second number</label>
+    <input type="number" id="num2">
+    <button onclick="mul()">Multiply</button>
+    <button onclick="div()">Divide</button>
+    <p id="result"></p>
+    <script>
+        function mul() {
+            let num1 = document.getElementById("num1");
+            let a = parseInt(num1.value);
+            let num2 = document.getElementById("num2");
+            let b = parseInt(num2.value);
+            let result = a * b;
+            document.getElementById("result").innerHTML = result;
+        }
+        function div() {
+            let num1 = document.getElementById("num1");
+            let a = parseInt(num1.value);
+            let num2 = document.getElementById("num2");
+            let b = parseInt(num2.value);
+            let result = a / b;
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
